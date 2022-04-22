@@ -1,0 +1,1 @@
+web: ./build/install/SafeSound/bin/SafeSound
