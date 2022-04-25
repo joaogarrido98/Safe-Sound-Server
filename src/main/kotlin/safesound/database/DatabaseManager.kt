@@ -21,7 +21,7 @@ class DatabaseManager : DBInterface {
      * connection to the database and creation of the tables
      */
     fun init() {
-        Database.connect(hikari())
+        Database.connect(hikariLocal())
         transaction {
             SchemaUtils.create(UserTable)
             SchemaUtils.create(ActivationTable)

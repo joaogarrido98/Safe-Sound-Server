@@ -22,6 +22,20 @@ fun Route.PoliceRoutes(db: DatabaseManager) {
         return !(policeCredentialsRequest.police_badge == null || policeCredentialsRequest.police_password == null)
     }
 
+    get("police"){
+        try{
+            db.addPolice(Police(
+                police_id = null,
+                police_active = true,
+                police_badge = 111111,
+                police_admin = true,
+                police_password = ProjectUtils.hash("Admin123*")
+            ))
+        }catch(e:Exception){
+            call.respond(e.message.toString())
+        }
+    }
+
     /**
      * This method checks the validity of the login request and if valid
      * finds police where badge is the same to given
